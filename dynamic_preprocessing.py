@@ -10,6 +10,10 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     # Standardize the Streamlit input date (assuming format YYYY-MM-DD) to match the DataFrame's date format
     date = pd.to_datetime(date, format='%Y-%m-%d', errors='coerce')
 
+    # Normalize both DataFrame dates and the input date to remove time
+    df['Date'] = df['Date'].dt.normalize()
+    date = date.normalize()
+
     # Initialize stats dictionary and empty result dictionary
     stats = {
         'goals': {'scored': ('FTHG', 'FTAG'), 'conceded': ('FTAG', 'FTHG')},
