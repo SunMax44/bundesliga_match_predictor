@@ -51,5 +51,5 @@ if st.button("Predict Result"):
     prediction = model.predict(features)
 
     # Display result
-    result_map = { 'H': "Home Win", 'D': "Draw", 'A': "Away Win" }
+    result_map = { '2': "Home Win", '1': "Draw", '3': "Away Win" }
     st.write("Predicted Result:", result_map[prediction[0]])
