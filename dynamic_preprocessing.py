@@ -4,19 +4,15 @@ def get_features_for_teams(team_h, team_a, date, npm=5, scaler):
         # Load the current season's data
     df = pd.read_csv('buli_24_25.csv')
 
-    # Ensure the 'Date' column in the DataFrame is in datetime format
-    df['Date'] = pd.to_datetime(df['Date'])
+    # Ensure the 'Date' column in the DataFrame is in datetime format (YYYY-MM-DD)
+    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d', errors='coerce')
 
-    # Ensure that `date` is explicitly converted to a compatible datetime format
-    if not isinstance(date, pd.Timestamp):
-        date = pd.to_datetime(date, errors='coerce')
-
-    # Check if conversion was successful, in case `date` or `df['Date']` contains any invalid entries
+    # Standardize the Streamlit input date (assuming format YYYY/MM/DD) to match the DataFrame's date format
+    date = pd.to_datetime(date, format='%Y/%m/%d', errors='coerce')
+    
+    # Check if conversion was successful
     if date is pd.NaT:
-        raise ValueError("The provided date is invalid or could not be converted to datetime format.")
-
-    # Remove any rows with NaT in 'Date' after conversion to ensure clean data
-    df = df.dropna(subset=['Date'])
+        raise ValueError("The provided date is invalid or could not be converted to the required datetime format.")
     
     # Initialize stats dictionary and empty result dictionary
     stats = {
