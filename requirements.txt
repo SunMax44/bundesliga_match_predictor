@@ -2,8 +2,5 @@ numpy
 pandas
 scikit-learn
 streamlit
-glob
-os
-re
 dynamic_preprocessing
 pickle
