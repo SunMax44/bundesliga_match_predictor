@@ -8,7 +8,24 @@ import dynamic_preprocessing
 model = pickle.load(open('rf_model.pkl', 'rb'))
 
 # Define Bundesliga teams
-teams = ["Team1", "Team2", ..., "Team18"]
+teams = ["M'gladbach",
+ 'Augsburg',
+ 'Freiburg',
+ 'Hoffenheim',
+ 'Mainz',
+ 'RB Leipzig',
+ 'Dortmund',
+ 'Wolfsburg',
+ 'St Pauli',
+ 'Union Berlin',
+ 'Bochum',
+ 'Ein Frankfurt',
+ 'Holstein Kiel',
+ 'Stuttgart',
+ 'Werder Bremen',
+ 'Leverkusen',
+ 'Heidenheim',
+ 'Bayern Munich']
 
 # Streamlit App UI
 st.title("Bundesliga Match Predictor")
