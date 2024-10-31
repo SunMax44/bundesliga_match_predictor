@@ -47,6 +47,8 @@ if st.button("Predict Result"):
     # Get the features based on selected teams and date
     features = get_features_for_teams(home_team, away_team, match_date, scaler)
     
+    st.write("Features for Prediction:", features)
+    
     # Predict using the model
     prediction = model.predict(features)
 
@@ -59,6 +61,3 @@ if st.button("Predict Result"):
     st.write("Home Win: 54%")
     st.write("Away Win: 44%")
     st.write("Draw: 36%")
-
-    # Display the whole prediction array or list
-    st.write("Predicted Results:", prediction)
