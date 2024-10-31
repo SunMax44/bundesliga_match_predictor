@@ -51,5 +51,9 @@ if st.button("Predict Result"):
     prediction = model.predict(features)
 
     # Display result
-    result_map = { '2': "Home Win", '1': "Draw", '3': "Away Win" }
-    st.write("Predicted Result:", result_map[prediction[0]])
+    # Display the raw prediction value for debugging
+    st.write("Prediction value:", prediction[0])
+
+    # Use int() to convert the prediction to match the integer keys in result_map
+    result_map = {2: "Home Win", 1: "Draw", 3: "Away Win"}
+    st.write("Predicted Result:", result_map[int(prediction[0])])
