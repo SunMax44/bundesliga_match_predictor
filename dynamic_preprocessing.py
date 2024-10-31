@@ -7,9 +7,16 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
     # Ensure the 'Date' column in the DataFrame is in datetime format
     df['Date'] = pd.to_datetime(df['Date'])
 
-        # Ensure that `date` is explicitly converted to a compatible datetime format
+    # Ensure that `date` is explicitly converted to a compatible datetime format
     if not isinstance(date, pd.Timestamp):
         date = pd.to_datetime(date, errors='coerce')
+
+    # Check if conversion was successful, in case `date` or `df['Date']` contains any invalid entries
+    if date is pd.NaT:
+        raise ValueError("The provided date is invalid or could not be converted to datetime format.")
+
+    # Remove any rows with NaT in 'Date' after conversion to ensure clean data
+    df = df.dropna(subset=['Date'])
     
     # Initialize stats dictionary and empty result dictionary
     stats = {
