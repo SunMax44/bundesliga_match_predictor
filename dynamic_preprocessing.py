@@ -3,6 +3,9 @@ import pandas as pd
 def get_features_for_teams(team_h, team_a, date, npm=5):
         # Load the current season's data
     df = pd.read_csv('buli_24_25.csv')
+
+    # Ensure the 'Date' column in the DataFrame is in datetime format
+    df['Date'] = pd.to_datetime(df['Date'])
     
     # Initialize stats dictionary and empty result dictionary
     stats = {
