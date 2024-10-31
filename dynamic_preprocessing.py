@@ -66,5 +66,7 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
     )
 
     features_df = pd.DataFrame([features])
+
+    features_df = features_df.astype(float)
     
     return features_df
