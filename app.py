@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 from datetime import datetime
 # Import your data loading and preprocessing functions
-from your_module import get_features_for_teams
+import dynamic_preprocessing
 
 # Load the trained model
 model = pickle.load(open('model.pkl', 'rb'))
