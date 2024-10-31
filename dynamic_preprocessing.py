@@ -25,8 +25,9 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     #past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
     #past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
 
-    past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)).tail(npm)
-    past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)).tail(npm)
+    past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h))].tail(npm)
+    past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a))].tail(npm)
+
     
     # Initialize dictionary to store calculated stats
     features = {}
