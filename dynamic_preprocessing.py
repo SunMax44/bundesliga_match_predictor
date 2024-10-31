@@ -7,7 +7,7 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     # Ensure the 'Date' column in the DataFrame is in datetime format (YYYY-MM-DD)
     df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d', errors='coerce')
 
-    # Standardize the Streamlit input date (assuming format YYYY/MM/DD) to match the DataFrame's date format
+    # Standardize the Streamlit input date (assuming format YYYY-MM-DD) to match the DataFrame's date format
     date = pd.to_datetime(date, format='%Y-%m-%d', errors='coerce')
 
     # Initialize stats dictionary and empty result dictionary
@@ -22,8 +22,11 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     }
     
     # Filter past matches for both teams
-    past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
-    past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
+    #past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
+    #past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
+
+    past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)).tail(npm)
+    past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)).tail(npm)
     
     # Initialize dictionary to store calculated stats
     features = {}
