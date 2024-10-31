@@ -64,5 +64,7 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
         (past_matches_away.loc[past_matches_away['AwayTeam'] == team_a, 'FTR'] == 'A').sum() * 3 +
         (past_matches_away['FTR'] == 'D').sum() * 1
     )
+
+    features_df = pd.DataFrame([features])
     
-    return features
+    return features_df
