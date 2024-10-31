@@ -5,14 +5,8 @@ from datetime import datetime
 from dynamic_preprocessing import get_features_for_teams
 
 #load filter
-try:
-    with open("scaler.pkl", "rb") as f:
-        scaler = pickle.load(f)
-    print("Scaler loaded successfully.")
-except FileNotFoundError:
-    print("scaler.pkl file not found.")
-except Exception as e:
-    print("Error loading scaler:", e)
+with open("scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
     
 # Load the trained model
 model = pickle.load(open('log_reg_model.pkl', 'rb'))
@@ -48,8 +42,6 @@ if st.button("Predict Result"):
     # Get the features based on selected teams and date
     features = get_features_for_teams(home_team, away_team, match_date, scaler)
     
-    st.write("Features for Prediction:", features)
-    
     # Predict using the model
     prediction = model.predict(features)
 
@@ -58,7 +50,7 @@ if st.button("Predict Result"):
     st.write("### Predicted Result:", result_map[int(prediction[0])])
 
     # Display pre-calculated precision values
-    st.write("#### General model performance on test data:")
+    st.write("#### General model performance on test data (precision rates):")
     st.write("Home Win: 54%")
     st.write("Away Win: 44%")
     st.write("Draw: 36%")
