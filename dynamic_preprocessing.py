@@ -8,7 +8,7 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d', errors='coerce')
 
     # Standardize the Streamlit input date (assuming format YYYY/MM/DD) to match the DataFrame's date format
-    date = pd.to_datetime(date, format='%Y/%m/%d', errors='coerce')
+    date = pd.to_datetime(date, format='%Y-%m-%d', errors='coerce')
 
     # Initialize stats dictionary and empty result dictionary
     stats = {
