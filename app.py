@@ -48,7 +48,7 @@ if st.button("Predict Result"):
     features = get_features_for_teams(home_team, away_team, match_date, scaler)
     
     # Predict using the model
-    prediction = model.predict([features])
+    prediction = model.predict(features)
 
     # Display result
     result_map = { 'H': "Home Win", 'D': "Draw", 'A': "Away Win" }
