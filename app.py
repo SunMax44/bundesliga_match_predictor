@@ -52,10 +52,10 @@ if st.button("Predict Result"):
 
     # Use int() to convert the prediction to match the integer keys in result_map
     result_map = {2: "Home Win", 1: "Draw", 3: "Away Win"}
-    st.write("Predicted Result:", result_map[int(prediction[0])])
+    st.write("### Predicted Result:", result_map[int(prediction[0])])
 
     # Display pre-calculated precision values
-    st.write("### General model performance on test data:")
+    st.write("#### General model performance on test data:")
     st.write("Home Win: 54%")
     st.write("Away Win: 44%")
     st.write("Draw: 36%")
