@@ -5,7 +5,7 @@ from datetime import datetime
 import dynamic_preprocessing
 
 # Load the trained model
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('rf_model.pkl', 'rb'))
 
 # Define Bundesliga teams
 teams = ["Team1", "Team2", ..., "Team18"]
