@@ -6,6 +6,10 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
 
     # Ensure the 'Date' column in the DataFrame is in datetime format
     df['Date'] = pd.to_datetime(df['Date'])
+
+        # Ensure that `date` is explicitly converted to a compatible datetime format
+    if not isinstance(date, pd.Timestamp):
+        date = pd.to_datetime(date, errors='coerce')
     
     # Initialize stats dictionary and empty result dictionary
     stats = {
