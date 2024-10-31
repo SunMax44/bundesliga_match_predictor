@@ -1,6 +1,6 @@
 import pandas as pd
 
-def get_features_for_teams(team_h, team_a, date, npm=5, scaler):
+def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     # Load the current season's data
     df = pd.read_csv('buli_24_25.csv')
 
@@ -9,11 +9,7 @@ def get_features_for_teams(team_h, team_a, date, npm=5, scaler):
 
     # Standardize the Streamlit input date (assuming format YYYY/MM/DD) to match the DataFrame's date format
     date = pd.to_datetime(date, format='%Y/%m/%d', errors='coerce')
-    
-    # Check if conversion was successful
-    if pd.isna(date):
-        raise ValueError("The provided date is invalid or could not be converted to the required datetime format.")
-    
+
     # Initialize stats dictionary and empty result dictionary
     stats = {
         'goals': {'scored': ('FTHG', 'FTAG'), 'conceded': ('FTAG', 'FTHG')},
