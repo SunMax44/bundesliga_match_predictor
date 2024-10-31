@@ -4,7 +4,7 @@ from datetime import datetime
 # Import your data loading and preprocessing functions
 from dynamic_preprocessing import get_features_for_teams
 
-# Load the scaler
+# Load the pre-trained scaler
 with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
     
