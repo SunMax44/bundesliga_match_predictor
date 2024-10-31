@@ -1,6 +1,6 @@
 import pandas as pd
 
-def get_features_for_teams(team_h, team_a, date, npm=5):
+def get_features_for_teams(team_h, team_a, date, npm=5, scaler):
         # Load the current season's data
     df = pd.read_csv('buli_24_25.csv')
 
@@ -67,6 +67,7 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
 
     features_df = pd.DataFrame([features])
 
-    features_df = features_df.astype(float)
+    # Apply the scaler to the features DataFrame
+    features_scaled = pd.DataFrame(scaler.transform(features_df), columns=features_df.columns)
     
-    return features_df
+    return features_scaled

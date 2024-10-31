@@ -4,6 +4,10 @@ from datetime import datetime
 # Import your data loading and preprocessing functions
 from dynamic_preprocessing import get_features_for_teams
 
+# Load the scaler
+with open("scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
+    
 # Load the trained model
 model = pickle.load(open('log_reg_model.pkl', 'rb'))
 
@@ -36,7 +40,7 @@ match_date = st.date_input("Select Match Date", datetime.today())
 
 if st.button("Predict Result"):
     # Get the features based on selected teams and date
-    features = get_features_for_teams(home_team, away_team, match_date)
+    features = get_features_for_teams(home_team, away_team, match_date, scaler)
     
     # Predict using the model
     prediction = model.predict([features])
