@@ -42,7 +42,7 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
             home_column, away_column = columns
             stat_home_as_home = past_matches_home.loc[past_matches_home['HomeTeam'] == team_h, home_column].sum()
             stat_home_as_away = past_matches_home.loc[past_matches_home['AwayTeam'] == team_h, away_column].sum()
-            features[f'p_home_{stat}_{subcategory}_last_{npm}'] = stat_home_as_home + stat_home_as_away
+            features[f'p_home_{stat}_{subcategory}'] = stat_home_as_home + stat_home_as_away
 
     # Calculate stats for away team
     for stat, subcategories in stats.items():
@@ -50,16 +50,16 @@ def get_features_for_teams(team_h, team_a, date, npm=5):
             home_column, away_column = columns
             stat_away_as_home = past_matches_away.loc[past_matches_away['HomeTeam'] == team_a, home_column].sum()
             stat_away_as_away = past_matches_away.loc[past_matches_away['AwayTeam'] == team_a, away_column].sum()
-            features[f'p_away_{stat}_{subcategory}_last_{npm}'] = stat_away_as_home + stat_away_as_away
+            features[f'p_away_{stat}_{subcategory}'] = stat_away_as_home + stat_away_as_away
     
     # Calculate points
-    features[f'p_home_points_last_{npm}'] = (
+    features[f'p_home_points_last'] = (
         (past_matches_home.loc[past_matches_home['HomeTeam'] == team_h, 'FTR'] == 'H').sum() * 3 +
         (past_matches_home.loc[past_matches_home['AwayTeam'] == team_h, 'FTR'] == 'A').sum() * 3 +
         (past_matches_home['FTR'] == 'D').sum() * 1
     )
     
-    features[f'p_away_points_last_{npm}'] = (
+    features[f'p_away_points_last'] = (
         (past_matches_away.loc[past_matches_away['HomeTeam'] == team_a, 'FTR'] == 'H').sum() * 3 +
         (past_matches_away.loc[past_matches_away['AwayTeam'] == team_a, 'FTR'] == 'A').sum() * 3 +
         (past_matches_away['FTR'] == 'D').sum() * 1
