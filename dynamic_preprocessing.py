@@ -4,15 +4,12 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     # Load the current season's data
     df = pd.read_csv('buli_24_25.csv')
 
-    # Ensure the 'Date' column in the DataFrame is in datetime format (YYYY-MM-DD)
-    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d', errors='coerce')
+    # Convert 'Date' column in the DataFrame (in DD/MM/YYYY format) to datetime and normali
+    df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y', errors='coerce')
+    
+    # Convert the Streamlit input date (in YYYY/MM/DD format) to match the DataFrame's date format
+    date = pd.to_datetime(date, format='%Y/%m/%d', errors='coerce')
 
-    # Standardize the Streamlit input date (assuming format YYYY-MM-DD) to match the DataFrame's date format
-    date = pd.to_datetime(date, format='%Y-%m-%d', errors='coerce')
-
-    # Normalize both DataFrame dates and the input date to remove time
-    df['Date'] = df['Date'].dt.normalize()
-    date = date.normalize()
 
     # Initialize stats dictionary and empty result dictionary
     stats = {
@@ -26,13 +23,13 @@ def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     }
     
     # Filter past matches for both teams
-    #past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
-    #past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
-
-    # Set a broad date range to include all dates
-    date = pd.Timestamp("2100-01-01")
     past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
     past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
+
+    # Set a broad date range to include all dates
+    #date = pd.Timestamp("2100-01-01")
+    #past_matches_home = df[((df['HomeTeam'] == team_h) | (df['AwayTeam'] == team_h)) & (df['Date'] < date)].tail(npm)
+    #past_matches_away = df[((df['HomeTeam'] == team_a) | (df['AwayTeam'] == team_a)) & (df['Date'] < date)].tail(npm)
 
 
     
