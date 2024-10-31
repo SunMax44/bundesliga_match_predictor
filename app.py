@@ -4,9 +4,14 @@ from datetime import datetime
 # Import your data loading and preprocessing functions
 from dynamic_preprocessing import get_features_for_teams
 
-# Load the pre-trained scaler
-with open("scaler.pkl", "rb") as f:
-    scaler = pickle.load(f)
+try:
+    with open("scaler.pkl", "rb") as f:
+        scaler = pickle.load(f)
+    print("Scaler loaded successfully.")
+except FileNotFoundError:
+    print("scaler.pkl file not found.")
+except Exception as e:
+    print("Error loading scaler:", e)
     
 # Load the trained model
 model = pickle.load(open('log_reg_model.pkl', 'rb'))
