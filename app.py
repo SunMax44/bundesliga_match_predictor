@@ -59,3 +59,6 @@ if st.button("Predict Result"):
     st.write("Home Win: 54%")
     st.write("Away Win: 44%")
     st.write("Draw: 36%")
+
+    # Display the whole prediction array or list
+    st.write("Predicted Results:", prediction)
