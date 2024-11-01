@@ -6,7 +6,7 @@ For an in-depth overview of the project, please view the presentation here: [Pro
 
 #### Streamlit
 
-[Streamlit Page](https://bundesligamatchpredictor.streamlit.app/)
+[Streamlit Page](https://bundesligamatchpredictor.streamlit.app/) to individually predict future Bundesliga matches (input data based on 1st of November 2024).
 
 ## Predict the outcomes of Bundesliga football matches
 
