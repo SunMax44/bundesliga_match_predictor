@@ -45,13 +45,10 @@ if st.button("Predict Result"):
     # Predict using the model
     prediction = model.predict(features)
 
-    confidence_score = model.predict_proba(features).max() * 100
-    st.write(f'Our model is confident in its prediction by a score of {confidence_score}%')
-
     # Use int() to convert the prediction to match the integer keys in result_map
     result_map = {2: "Home Win", 1: "Draw", 3: "Away Win"}
     st.write("### Predicted Result:", result_map[int(prediction[0])])
-    confidence_score = model.predict_proba(features).max() * 100
+    confidence_score = round(model.predict_proba(features).max() * 100,2)
     st.write(f'##### Our model is confident in its prediction by a score of {confidence_score}%')
 
     # Display pre-calculated precision values
