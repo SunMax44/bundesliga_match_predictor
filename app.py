@@ -61,5 +61,5 @@ if st.button("Predict Result"):
     # Display pre-calculated precision values
     st.write("General model performance on test data (precision rates):")
     st.write("Home Win: 54%")
-    st.write("Away Win: 44%")
-    st.write("Draw: 36%")
+    st.write("Away Win: 45%")
+    st.write("Draw: 40%")
