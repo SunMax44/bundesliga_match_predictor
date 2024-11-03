@@ -5,15 +5,15 @@ from datetime import datetime
 from functions.dynamic_preprocessing import get_features_for_teams
 
 # Load the scaler
-with open("../pickle_files/scaler.pkl", "rb") as f:
+with open("pickle_files/scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
 # Load the PCA transformer
-with open("../pickle_files/pca.pkl", "rb") as f:
+with open("pickle_files/pca.pkl", "rb") as f:
     pca = pickle.load(f)
     
 # Load the trained model
-model = pickle.load(open('../pickle_files/log_reg_model.pkl', 'rb'))
+model = pickle.load(open('pickle_files/log_reg_model.pkl', 'rb'))
 
 # Define Bundesliga teams
 teams = ["M'gladbach",
