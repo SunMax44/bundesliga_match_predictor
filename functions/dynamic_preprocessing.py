@@ -2,7 +2,7 @@ import pandas as pd
 
 def get_features_for_teams(team_h, team_a, date, scaler, npm=5):
     # Load the current season's data
-    df = pd.read_csv('buli_24_25.csv')
+    df = pd.read_csv('../data/current_season/buli_24_25.csv')
 
     # Convert 'Date' column in the DataFrame (in DD/MM/YYYY format) to datetime and normali
     df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y', errors='coerce')
