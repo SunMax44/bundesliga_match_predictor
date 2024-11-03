@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 from datetime import datetime
 # Import your data loading and preprocessing functions
-from dynamic_preprocessing import get_features_for_teams
+from functions.dynamic_preprocessing import get_features_for_teams
 
 # Load the scaler
 with open("../pickle_files/scaler.pkl", "rb") as f:
